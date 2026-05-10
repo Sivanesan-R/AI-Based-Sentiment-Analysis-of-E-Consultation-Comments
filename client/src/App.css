@@ -1,0 +1,68 @@
+/* Global white background for the entire app */
+body, html, #root {
+  background-color: #ffffff; /* white */
+  color: #1f2937; /* slate-800 for professional dark text */
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Common card style */
+.card, .container, .shadow-card {
+  background-color: #fdfdf7; /* light cream */
+  border-radius: 1rem;
+  border: 1px solid #d1fae5; /* subtle green/emerald border */
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1); /* soft shadow */
+  padding: 1.5rem;
+}
+
+/* Buttons */
+.btn, .btn-primary {
+  background-color: #10b981; /* emerald */
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #059669; /* darker emerald */
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Links */
+a {
+  color: #065f46; /* dark green */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #10b981; /* emerald */
+}
+
+/* Input fields */
+input, textarea, select {
+  background-color: #ffffff;
+  border: 1px solid #d1fae5;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #1f2937;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Gradient line for footer */
+.gradient-line {
+  height: 0.4rem;
+  width: 6rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right, #10b981, #fcd34d, #10b981);
+}
