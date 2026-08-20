@@ -1,7 +1,0 @@
-flask
-flask-cors
-joblib
-matplotlib
-numpy
-scikit-learn
-wordcloud
