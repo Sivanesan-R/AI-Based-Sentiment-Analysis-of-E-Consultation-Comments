@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+transformers
+huggingface_hub
+torch
+flask
+flask-cors
+wordcloud
+tiktoken
+protobuf
+blobfile

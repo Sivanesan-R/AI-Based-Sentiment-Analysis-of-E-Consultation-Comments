@@ -1,0 +1,16 @@
+node_modules/
+backend/.venv/
+client/node_modules/
+.pnpm-store/
+
+# Production builds
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Logs and OS files
+*.log
+.DS_Store
