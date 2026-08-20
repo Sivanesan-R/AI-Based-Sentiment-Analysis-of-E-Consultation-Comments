@@ -1,94 +1,110 @@
-# SAMIKSHA – Sentiment Analysis of E-Consultation Comments
+# AI-Based Sentiment Analysis of E-Consultation Comments
 
-## 📌 Problem Statement
-**ID:** 25035  
-**Title:** Sentiment analysis of comments received through E-consultation module  
-**Theme:** Miscellaneous  
-**Team ID:** VJITIH-15  
-**Team Name:** SAMIKSHA  
+A full-stack web application that performs **AI-powered sentiment analysis** on public consultation and feedback comments. Built with a **Flask** backend, **React.js** frontend, and **NLP/ML models** for intelligent text classification.
 
-----
+---
 
-## 💡 Proposed Solution
-We aim to build a **modular, multi-tier web application** for analyzing feedback comments.  
-The key features include:
+## 🚀 Features
 
-- Process comments individually or in bulk (via file uploads).  
-- Classify comments into **Positive, Negative, or Neutral** sentiment.  
-- Extract keywords, topics, and entities from feedback.  
-- Summarize long comments into concise summaries.  
-- Provide a **web-based dashboard** for real-time visualization.  
+- **Single & Bulk Analysis** — Analyze comments one at a time or upload files for batch processing.
+- **Sentiment Classification** — Classifies each comment as **Positive**, **Negative**, or **Neutral** using trained ML models.
+- **Keyword & Topic Extraction** — Automatically identifies key themes, topics, and entities from feedback.
+- **Comment Summarization** — Condenses long-form feedback into concise, actionable summaries.
+- **Interactive Dashboard** — Real-time charts and word clouds for visual insight into sentiment trends.
 
-----
+---
 
-## ⚙️ Technical Approach
-- **Backend:** Python, Flask API  
-- **AI/ML:** Scikit-learn, NLTK, Transformers (NLP models)  
-- **Frontend:** React.js, TailwindCSS  
-- **Visualization:** Matplotlib, WordCloud  
-- **Deployment:** Vercel  
+## 🛠️ Tech Stack
 
-----
+| Layer           | Technology                              |
+| --------------- | --------------------------------------- |
+| **Backend**     | Python, Flask REST API                  |
+| **AI / ML**     | Scikit-learn, NLTK, Transformers        |
+| **Frontend**    | React.js, Vite, TailwindCSS            |
+| **Visualization** | Matplotlib, WordCloud, Chart.js      |
+| **Deployment**  | Vercel (Frontend), Local (Backend)      |
 
-## ✅ Feasibility & Challenges
-1. **Misunderstood comments** → Sarcasm/complex language can confuse AI.  
-2. **Badly written comments** → Poor input reduces accuracy.  
-3. **AI dependency** → May miss important insights.  
-4. **Setup time** → Requires effort to train models initially.  
+---
 
-----
+## 📁 Project Structure
 
-## 🌍 Impact & Benefits
-- ⏳ **Saves Time:** Handles thousands of comments quickly.  
-- ⚖️ **Fair & Consistent:** AI removes personal bias.  
-- 🔎 **Easy Insights:** Word clouds highlight key issues.  
-- ✂️ **Quick Summaries:** Long inputs → concise insights.  
-- 📊 **Scalable:** Works efficiently even with huge volumes of data.  
+```
+AI-Based-Sentiment-Analysis-of-E-Consultation-Comments/
+├── backend/                  # Flask API + ML models
+│   ├── App.py                # Main Flask application
+│   ├── Model.py              # Sentiment model logic
+│   ├── Models/               # Saved/trained model files
+│   ├── dataset/              # Training datasets
+│   ├── data_processing.ipynb # Data cleaning & preprocessing
+│   ├── model.ipynb           # Model training notebook
+│   └── requirements.txt     # Python dependencies
+├── client/                   # React frontend (Vite)
+│   ├── src/                  # React source code
+│   ├── public/               # Static assets
+│   ├── package.json          # Node dependencies
+│   └── vite.config.js        # Vite configuration
+├── images/                   # Architecture diagrams
+├── README.MD
+└── LICENSE
+```
 
-----
+---
 
-## 📊 Dataset & References
-- **Dataset:** [Twitter Entity Sentiment Analysis – Kaggle](https://www.kaggle.com/datasets/jp797498e/twitter-entity-sentiment-analysis)  
-- **Twitter API Docs:** [X API Docs](https://developer.x.com/en/docs/x-api)  
-- **Scikit-learn Docs:** [v1.7 Release](https://scikit-learn.org/stable/whats_new/v1.7.html)  
-- **NLTK Installation:** [NLTK Docs](https://www.nltk.org/install.html)  
-- **Research Paper:** [Sentiment Analysis in Social Media Using Deep Learning](https://ijisae.org/index.php/IJISAE/article/view/5557)  
+## ⚡ Getting Started
 
-----
+### Prerequisites
 
-## 🚀 How to Run
+- **Python** 3.9 or higher
+- **Node.js** 18 or higher
+- **pip** and **npm** installed
 
-### Backend (Flask)
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sivanesan-R/AI-Based-Sentiment-Analysis-of-E-Consultation-Comments.git
+cd AI-Based-Sentiment-Analysis-of-E-Consultation-Comments
+```
+
+### 2. Setup Backend (Flask API)
+
 ```bash
 cd backend
+python -m venv .venv
+source .venv/bin/activate        # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python App.py
 ```
 
-### Frontend (React)
+The Flask API will start at `http://127.0.0.1:5000`
+
+### 3. Setup Frontend (React)
+
+Open a new terminal:
+
 ```bash
 cd client
 npm install
 npm run dev
 ```
 
-On this Windows setup, you can also run the project with the included launch files:
+The React app will start at `http://127.0.0.1:5173`
+
+> **Note:** The Vite dev server proxies API requests to Flask via the `/api/analyze` endpoint. Both servers must be running simultaneously.
+
+### 4. Quick Launch (Windows Only)
 
 ```bash
-run-backend.bat
-run-frontend.bat
+run-backend.bat     # Starts Flask server
+run-frontend.bat    # Starts React dev server
 ```
 
-Open the frontend at:
+---
 
-```bash
-http://127.0.0.1:5173
-```
+## 📊 How It Works
 
-The React app sends requests to Flask through the Vite proxy at `/api/analyze`.
+1. **Input** — User submits a comment (or uploads a file with multiple comments).
+2. **Processing** — The Flask API preprocesses the text (tokenization, stopword removal, etc.).
+3. **Classification** — The trained ML model predicts sentiment (Positive / Negative / Neutral).
+4. **Extraction** — Keywords, topics, and named entities are extracted from the text.
+5. **Visualization** — Results are displayed on the React dashboard with charts and word clouds.
 
-----
-
-## 👥 Team – SAMIKSHA
-- Team ID: VJITIH-15  
-- Contribution: AI/ML, Web Development, Data Analysis  
