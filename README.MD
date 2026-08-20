@@ -22,7 +22,7 @@ A full-stack web application that performs **AI-powered sentiment analysis** on 
 | **AI / ML**     | Scikit-learn, NLTK, Transformers        |
 | **Frontend**    | React.js, Vite, TailwindCSS            |
 | **Visualization** | Matplotlib, WordCloud, Chart.js      |
-| **Deployment**  | Vercel (Frontend), Local (Backend)      |
+| **Deployment**  | Netlify (Frontend), Render (Backend)   |
 
 ---
 
@@ -90,6 +90,52 @@ npm run dev
 The React app will start at `http://127.0.0.1:5173`
 
 > **Note:** The Vite dev server proxies API requests to Flask via the `/api/analyze` endpoint. Both servers must be running simultaneously.
+
+## Deploy the Full Project
+
+The frontend and backend are deployed as two services. Netlify hosts the React files, while Render runs the Flask API and loads the saved models from `backend/Models`.
+
+### Deploy the backend on Render
+
+1. Open [render.com](https://render.com), sign in with GitHub, and choose **New +** -> **Web Service**.
+2. Select this repository.
+3. Use these settings:
+
+```text
+Root directory: leave empty
+Build command: pip install -r backend/requirements.txt
+Start command: gunicorn --chdir backend App:app
+Runtime: Python 3
+```
+
+4. Add this environment variable:
+
+```text
+CORS_ORIGINS=https://YOUR-NETLIFY-SITE.netlify.app
+```
+
+5. Deploy and open the generated URL. Add `/` to it in a browser; it should return `{"status":200,"msg":"api is live"}`.
+
+### Deploy the frontend on Netlify
+
+1. In Netlify, choose **Add new project** -> **Import an existing project** and select this GitHub repository.
+2. Set:
+
+```text
+Base directory: client
+Build command: npm run build
+Publish directory: dist
+```
+
+3. Add the environment variable `VITE_API_URL` with the Render URL, for example:
+
+```text
+VITE_API_URL=https://YOUR-RENDER-SERVICE.onrender.com
+```
+
+4. Deploy the site. After the first deployment, copy the exact Netlify URL into Render's `CORS_ORIGINS` value and redeploy the backend.
+
+The `VITE_API_URL` value is embedded during the Netlify build, so trigger a new frontend deploy whenever it changes. Do not use `localhost` in the Netlify environment variable.
 
 ### 4. Quick Launch (Windows Only)
 

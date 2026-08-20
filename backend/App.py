@@ -1,5 +1,6 @@
 import base64
 import io
+import os
 from collections import Counter
 from pathlib import Path
 import matplotlib
@@ -57,7 +58,8 @@ def fig_to_base64(fig):
 # Flask API
 # --------------------
 app = Flask(__name__)
-CORS(app)
+allowed_origins = os.environ.get("CORS_ORIGINS", "*")
+CORS(app, origins=allowed_origins if allowed_origins == "*" else allowed_origins.split(","))
 
 @app.route("/", methods=["GET"])
 def main():
@@ -141,4 +143,8 @@ def analyze():
     return jsonify(response)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=os.environ.get("FLASK_DEBUG", "false").lower() == "true",
+    )
